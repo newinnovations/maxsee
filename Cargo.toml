@@ -1,0 +1,20 @@
+[package]
+name = "microscope"
+version = "0.1.0"
+edition = "2024"
+description = "UDP client for live frames from the Max-See Wi-Fi microscope"
+license = "MIT"
+
+[dependencies]
+chrono = { version = "0.4", default-features = false, features = ["clock"] }
+gtk4 = { version = "0.11", optional = true }
+gdk-pixbuf = { version = "0.22", optional = true }
+
+[features]
+default = []
+gtk-example = ["dep:gtk4", "dep:gdk-pixbuf"]
+
+[[example]]
+name = "gtk_live_view"
+path = "examples/gtk_live_view.rs"
+required-features = ["gtk-example"]
